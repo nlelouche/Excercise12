@@ -10,4 +10,16 @@
 
 @interface Ex12ViewController : UIViewController
 
+
+@property (nonatomic, retain) IBOutlet UILabel *startLongTaskLabel;
+@property (nonatomic, retain) IBOutlet UILabel *checkLongTaskLabel;
+@property (nonatomic, retain) IBOutlet UIButton *startLongTaskButton;
+@property (nonatomic, retain) IBOutlet UIButton *checkLongTaskButton;
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityIndicator;
+
+-(void) longTask;
+-(IBAction) startRepeatingTask;
+-(void) updateGUI:(NSTimer *)aTimer;
+-(IBAction) doSingularTask;
+
 @end
