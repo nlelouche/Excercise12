@@ -27,10 +27,12 @@ int i = 0;
 	} while (i<=1999999999); 
     thread = nil;
     i = 0;
-	[_activityIndicator stopAnimating]; 
+	[_activityIndicator stopAnimating];
+    _activityIndicator.hidden = YES;
 } 
 
--(IBAction) startRepeatingTask{ 
+-(IBAction) startRepeatingTask{
+    _activityIndicator.hidden = NO;
 	[_activityIndicator startAnimating]; 
 	
 	if(thread == nil) 
@@ -57,6 +59,7 @@ int i = 0;
 	else 
     {
 		_checkLongTaskLabel.text = @"Task is now finished!"; 
+        
     }
 	timer = [[NSTimer scheduledTimerWithTimeInterval:(0.5) 
                                               target:self
@@ -77,12 +80,15 @@ int i = 0;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _activityIndicator.hidden = YES;
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    [thread release];
+    [timer release];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
